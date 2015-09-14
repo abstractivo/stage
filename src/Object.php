@@ -59,7 +59,7 @@ class Object
             ksort($ref->_events[$name]);
 
             foreach( $ref->_events[$name] AS $order => $callback ) {
-              call_user_func_array( $callback, $args );
+              return call_user_func_array( $callback, $args );
             }
           }
         }
