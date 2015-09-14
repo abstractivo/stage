@@ -55,6 +55,7 @@ class Object
 
           if( isset( $ref->_events[$name] ) ) {
             $args = func_get_args();
+            
             array_shift($args); // Quitar el primer argumento ( $name );
             ksort($ref->_events[$name]);
 

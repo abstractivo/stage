@@ -35,6 +35,10 @@ $template->widgets = array(
   'footer' => new Stage\Ui\Layer
 );
 
+$template->widgets['menu']->bind('before_render', function( $layer ) {
+  $layer->outPut = '<b>Before Render</b>';
+});
+
 
 $itemsStore = new Stage\Set;
 $itemsStore->items = array(
@@ -42,8 +46,11 @@ $itemsStore->items = array(
   'Item 2' => 'http://taringa.net'
 );
 
+
+
 $template->widgets['menu']->add( new Stage\Template('component/search') );
 $template->widgets['menu']->add( new Stage\Template('component/menu', $itemsStore ) );
+
 
 
 $template->articulo = array(

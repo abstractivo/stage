@@ -8,6 +8,8 @@ class Layer extends Unique
 {
   private $queue = array();
 
+  public $outPut = '';
+
   public function add( $element, $priority = 0 )
   {
     $this->queue[$priority][] = $element;
@@ -24,20 +26,20 @@ class Layer extends Unique
 
   public function display()
   {
-    $strOut = '';
-    if( empty( $this->queue ) ) return $strOut;
+    if( empty( $this->queue ) ) return $this->outPut;
 
     foreach( $this->queue AS $priority => $elements )
     {
-      $strOut .= '<!-- Set prioridad #'. $priority ."-->\n";
+
+      $this->fire('before_render', $this );
+      $this->outPut .= '<!-- Set prioridad #'. $priority ."-->\n";
       foreach( $elements as $index => $element ) {
-        $strOut .= "\t<!-- Elemento index #". $index . "-->\n"
+      $this->outPut .= "\t<!-- Elemento index #". $index . "-->\n"
                 . $element
                 . "\n\n";
-
       }
     }
 
-    return $strOut;
+    return $this->outPut;
   }
 }
