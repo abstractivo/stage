@@ -25,11 +25,30 @@ $config->bind('dump', function(){
 });
 
 
-
 $config->fire('dump');
 
 
 $template = new Stage\Template('home');
+
+$template->widgets = array(
+  'menu' => new Stage\Ui\Layer,
+  'footer' => new Stage\Ui\Layer
+);
+
+
+$items = new Stage\Set;
+$items[] = 'Item 1';
+$items[] = 'Item 2';
+$items[] = 'Item 3';
+$items[] = 'Item 4';
+
+$template->widgets['menu']->add( new Stage\Template('component/menu', $items) );
+
+
+
+
+
+
 $template->articulo = array(
   'titulo' => 'Prueba',
   'contenido' => 'Hola mundo'
