@@ -22,3 +22,7 @@ Uno de los pilares tiene que ser la cadena de eventos que se ejecutan en el runt
 #### Disculpas anticipadas
 
 Sepan disculpar las faltas técnicas, y espero que este repositorio sirva para fines personales como de aprendizaje.
+
+
+### Testing
+Para testear se utilizara PHPUnit

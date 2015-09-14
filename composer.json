@@ -1,0 +1,15 @@
+{
+    "name": "abstractivo/stage",
+    "description": "Microframework para produccion",
+    "license": "GNU GENERAL PUBLIC LICENSE",
+    "authors": [
+        {
+            "name": "cortadoverde",
+            "email": "p.a.samu@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload" : {
+      "psr-4" : { "Stage\\" : "src/" }
+    }
+}
