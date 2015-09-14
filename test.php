@@ -36,17 +36,14 @@ $template->widgets = array(
 );
 
 
-$items = new Stage\Set;
-$items[] = 'Item 1';
-$items[] = 'Item 2';
-$items[] = 'Item 3';
-$items[] = 'Item 4';
+$itemsStore = new Stage\Set;
+$itemsStore->items = array(
+  'Item 1' => 'http://google.com.ar',
+  'Item 2' => 'http://taringa.net'
+);
 
-$template->widgets['menu']->add( new Stage\Template('component/menu', $items) );
-
-
-
-
+$template->widgets['menu']->add( new Stage\Template('component/search') );
+$template->widgets['menu']->add( new Stage\Template('component/menu', $itemsStore ) );
 
 
 $template->articulo = array(

@@ -1,7 +1,7 @@
 <nav>
   <ul>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
+    <?php foreach( $items AS $name => $url ) : ?>
+      <li> <a href="<?php echo $url?>"> <?php echo $name ?> </a></li>
+    <?php endforeach; ?>
   </ul>
 </nav>
