@@ -56,7 +56,6 @@ class Template extends Setter
 
   public function render( $template = null, $data = false, $merge = false )
   {
-    print_r($this->store);die;
     $file = $this->getPathTemplate( $template );
     if( ! file_exists ( $file ) ) {
       throw new Exception\Template ("No existe el archivo: ". $file , 2);
@@ -68,7 +67,7 @@ class Template extends Setter
       ob_start();
     }
 
-    $extract = ! $data ? $this->store->getStore() : ( $merge == false ? $data : array_merge( $this->store->getStore(), $data ) );
+    $extract = ! $data ? $this->_store->getStore() : ( $merge == false ? $data : array_merge( $this->_store->getStore(), $data ) );
     $extract['__data__'] = $extract;
 
     extract( $extract );
