@@ -4,7 +4,7 @@ namespace Stage;
 
 class Set extends Unique implements \IteratorAggregate, \ArrayAccess, \Countable
 {
-  private $_store = array();
+  protected $_store = array();
 
   public function __set( $index, $value ) {
     $this->offsetSet( $index, $value );
@@ -53,5 +53,10 @@ class Set extends Unique implements \IteratorAggregate, \ArrayAccess, \Countable
   public function count()
   {
     return count( $this->_store );
+  }
+
+  public function getStore()
+  {
+    return $this->_store;
   }
 }

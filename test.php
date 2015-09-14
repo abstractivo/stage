@@ -11,6 +11,10 @@ $config->site = array(
   'author' => 'Cortado Verde'
 );
 
+$config->template = array(
+  "base_dir" => __DIR__ . '/' . 'templates'
+);
+
 $config->bind('dump', function(){
   $singletonConfig = Stage\Config::getInstance();
   echo '<pre>'. "\n";
@@ -23,3 +27,12 @@ $config->bind('dump', function(){
 
 
 $config->fire('dump');
+
+
+$template = new Stage\Template('home');
+$template->articulo = array(
+  'titulo' => 'Prueba',
+  'contenido' => 'Hola mundo'
+);
+
+echo $template;
