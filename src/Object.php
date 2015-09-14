@@ -20,6 +20,8 @@ class Object
 
   protected $callbacks = array();
 
+  protected $_events = array();
+
   public function __construct()
   {
     $ref = $this;
