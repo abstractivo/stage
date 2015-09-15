@@ -8,7 +8,9 @@
             "email": "p.a.samu@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+      "mustache/mustache": "~2.5"
+    },
     "autoload" : {
       "psr-4" : { "Stage\\" : "src/" }
     }
