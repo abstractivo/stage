@@ -6,7 +6,7 @@ class Page extends \Stage\Unique
 {
 
 
-  public $assets;
+  public $assets = array('css' => array(), 'js' => array());
 
   public $title = 'Hola mundo';
 
@@ -26,6 +26,32 @@ class Page extends \Stage\Unique
 
     return $this;
 
+  }
+
+
+  public function addCss( $path, $options = false )
+  {
+    $realPath = \Stage\Stage::getUrl( \Stage\Stage::getPath( $path ) );
+    $this->assets['css'][] = array(
+      'src' => $realPath,
+      'attrs' => $options
+    );
+    return $this;
+  }
+
+  public function addJs( $path, $append = true )
+  {
+    $realPath = \Stage\Stage::getUrl( \Stage\Stage::getPath( $path ) );
+    $data = array(
+      'src' => $realPath
+    );
+
+    if( $append )
+      array_push( $this->assets['js'], $data);
+    else
+      array_unshift( $this->assets['js'], $data );
+
+    return $this;
   }
 
 }
