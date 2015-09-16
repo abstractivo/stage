@@ -55,7 +55,7 @@ class Object
 
           if( isset( $ref->_events[$name] ) ) {
             $args = func_get_args();
-            
+
             array_shift($args); // Quitar el primer argumento ( $name );
             ksort($ref->_events[$name]);
 
@@ -87,8 +87,10 @@ class Object
 
         try {
           call_user_func_array( $this->callbacks[$name] , $args );
+        } catch ( Exception\Stage $e ) {
+          throw $e;
         } catch ( \Exception $e ) {
-          throw new Exception\Object("No se puede ejecutar el metodo:" . $name, 4);
+          throw new Exception\Object("No se puede ejecutar el metodo:" . $name . print_r($this, true), 4);
         }
       } else {
         throw new Exception\Object('El metodo ' . $name . ' no pude ser invocado', 5);
@@ -111,8 +113,10 @@ class Object
   {
     try {
       $this->invoke($name, $arguments);
+    } catch ( Exception\Stage $e ) {
+      throw $e;
     } catch ( Exception\Object $e ) {
-      echo $e;
+      throw $e;
     }
   }
 
