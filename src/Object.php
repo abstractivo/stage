@@ -81,12 +81,12 @@ class Object
     try {
       $method = new \ReflectionMethod ( get_called_class(), $name );
       $method->setAccesible(true);
-      $method->invokeArgs($this, $args);
+      return $method->invokeArgs($this, $args);
     } catch( \ReflectionException $eR ) {
       if ( isset( $this->callbacks ) && is_array( $this->callbacks ) && isset ( $this->callbacks[$name] ) ) {
 
         try {
-          call_user_func_array( $this->callbacks[$name] , $args );
+          return call_user_func_array( $this->callbacks[$name] , $args );
         } catch ( Exception\Stage $e ) {
           throw $e;
         } catch ( \Exception $e ) {
@@ -112,7 +112,7 @@ class Object
   public function __call( $name, $arguments )
   {
     try {
-      $this->invoke($name, $arguments);
+      return $this->invoke($name, $arguments);
     } catch ( Exception\Stage $e ) {
       throw $e;
     } catch ( Exception\Object $e ) {
